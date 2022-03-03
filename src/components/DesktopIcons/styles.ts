@@ -12,6 +12,7 @@ export const Container = styled.div`
     :hover {
         border: 1px solid grey;
         background: rgba(220,220,220,0.2);
+        cursor: pointer;
     }
 `;
 
