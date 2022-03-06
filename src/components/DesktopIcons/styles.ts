@@ -1,8 +1,13 @@
 import styled from 'styled-components';
 
+interface NameProps {
+    nameColor: string;
+}
+
 export const Container = styled.div`
     z-index: 1;
     display: flex;
+    width: 6rem;
     flex-direction: column;
     align-items: center;
     margin-bottom: 1rem;
@@ -21,9 +26,10 @@ export const Icon = styled.img`
     height: 3rem;
 `;
 
-export const Name = styled.span`
-    color: white;
+export const Name = styled.span<NameProps>`
+    color: ${({nameColor}) => nameColor};
     font-size: 1rem;
     font-family: 'arial', serif;
     margin-top: 0.5rem;
+    text-align: center;
 `;

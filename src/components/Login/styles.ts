@@ -8,7 +8,6 @@ export const Container = styled.div<LoginProps>`
     width: 100vw;
     height: 100vh;
     display: ${({isShowing}) => isShowing ? 'flex' : 'none'};
-    background: green;
     position: relative;
 `;
 

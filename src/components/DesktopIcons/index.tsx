@@ -6,15 +6,16 @@ interface Props {
     src: string;
     alt: string;
     name: string;
+    nameColor: string;
     handleClick(): void;
 }
 
-export function DesktopIcon({src, alt, name, handleClick }: Props) {
-
+export function DesktopIcon({src, alt, name, handleClick, nameColor }: Props) {
+   
     return (
-        <Container onClick={handleClick}>
+        <Container onDoubleClick={handleClick}>
             <Icon src={src} alt={alt} />
-            <Name>{name}</Name>
+            <Name nameColor={nameColor}>{name}</Name>
         </Container>
     )
 }
