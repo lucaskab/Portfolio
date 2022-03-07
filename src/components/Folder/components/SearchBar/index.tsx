@@ -3,6 +3,7 @@ import ArrowLeft from "../../../../assets/arrow-left.png";
 import ArrowRight from "../../../../assets/arrow-right.png";
 import Folder from "../../../../assets/folder.png";
 import RightChevron from "../../../../assets/right-chevron.png";
+import ArrowDown from "../../../../assets/arrow-down.png";
 
 export function SearchBar() {
     return (
@@ -10,6 +11,7 @@ export function SearchBar() {
             <ArrowsContainer>
                 <HeaderIcon src={ArrowLeft} alt="Arrow Left Icon"/>
                 <HeaderIcon src={ArrowRight} alt="Arrow Right Icon"/>
+                <RightChevronIcon src={ArrowDown} alt="Arrow Down"/>
             </ArrowsContainer>
             <SearchBarContainer>
                 <HeaderIcon src={Folder} alt="Folder Icon"/>

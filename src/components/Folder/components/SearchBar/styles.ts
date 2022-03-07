@@ -11,7 +11,7 @@ export const Container = styled.div`
 `;
 
 export const ArrowsContainer = styled.div`
-    width: 5rem;
+    width: 7rem;
     height: 100%;
     display: flex;
     align-items: center;
@@ -33,7 +33,7 @@ export const SearchBarContainer = styled.div`
     height: 80%;
     border: 1px solid #D8D7D7;
     align-self: center;
-    margin-left: 3rem;
+    margin-left: 1rem;
     display: flex;
     align-items: center;
     padding: 1rem;

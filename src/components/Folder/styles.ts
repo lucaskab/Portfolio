@@ -14,6 +14,14 @@ export const Container = styled.div`
     position: absolute;
 `;
 
+export const FolderContent = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    height: 84%;
+    width: 100%;
+`;
+
 export const FolderContainer = styled.div<FolderProps>`
     display: flex;
     width: ${({isMaximized}) => isMaximized ? '100vw' : '80vw'};
@@ -65,7 +73,7 @@ export const FolderName = styled.span`
     font-family: 'arial';
     font-size: 0.8rem;
     color: black;
-    margin-left: 2rem;
+    margin-left: 1rem;
 `;
 
 export const ContentContainer = styled.div`
@@ -91,6 +99,8 @@ export const Footer = styled.footer`
     position: absolute;
     bottom: 0;
     padding: 0 1rem;
+    z-index: 999;
+    background: white;
 `;
 
 export const ItensQuantity = styled.span`
