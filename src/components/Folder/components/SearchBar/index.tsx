@@ -5,7 +5,11 @@ import Folder from "../../../../assets/folder.png";
 import RightChevron from "../../../../assets/right-chevron.png";
 import ArrowDown from "../../../../assets/arrow-down.png";
 
-export function SearchBar() {
+interface SearchBarProps {
+    folderName: string;
+}
+
+export function SearchBar({folderName}: SearchBarProps) {
     return (
         <Container>
             <ArrowsContainer>
@@ -20,7 +24,7 @@ export function SearchBar() {
                 <RightChevronIcon src={RightChevron} alt="Right Icon"/>
                 <SearchBarText> Desktop</SearchBarText>
                 <RightChevronIcon src={RightChevron} alt="Right Icon"/>
-                <SearchBarText> Personal Projects</SearchBarText>
+                <SearchBarText>{folderName}</SearchBarText>
             </SearchBarContainer>
         </Container>
     )

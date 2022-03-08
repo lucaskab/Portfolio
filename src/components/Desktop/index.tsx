@@ -17,6 +17,7 @@ import { useEffect, useState } from 'react';
 export function Desktop() {
     const [isHacked, setIsHacked] = useState(false);
     const [openPersonalProjects, setOpenPersonalProjects] = useState(false);
+    const [folder, setFolder] = useState('');
 
     const [time, setTime] = useState('');
     const [date, setDate] = useState('');
@@ -57,8 +58,9 @@ export function Desktop() {
         else if (website === 'Github') window.open('https://www.github.com/lucaskab');
         else window.open('https://drive.google.com/file/d/13z09LML6Wqh3oC-7aUVLBFAuh-f3qBUS/view');
     }
-    function openFolder(){
+    function openFolder(name){
         setOpenPersonalProjects(!openPersonalProjects);
+        setFolder(name);
     }
 
     return(
@@ -70,12 +72,12 @@ export function Desktop() {
                 <DesktopIcon nameColor="White" handleClick={() => newTab('CV')} src={CV} alt='CV' name='CV' />
                 <DesktopIcon nameColor="White" handleClick={HandleHacked} src={Gmail} alt='Gmail' name='Gmail'/>
                 <DesktopIcon nameColor="White" handleClick={HandleHacked} src={CMD} alt='CMD' name="Don't click"/>
-                <DesktopIcon nameColor="White" handleClick={openFolder} src={FolderIcon} alt='Folder' name="Personal Projects"/>
-                <DesktopIcon nameColor="White" handleClick={openFolder} src={FolderIcon} alt='Folder' name="Experiences"/>
+                <DesktopIcon nameColor="White" handleClick={() => openFolder('Personal Projects')} src={FolderIcon} alt='Folder' name="Personal Projects"/>
+                <DesktopIcon nameColor="White" handleClick={() => openFolder('Experiences')} src={FolderIcon} alt='Folder' name="Experiences"/>
             </IconsContainer>
             
             {isHacked ? <Hacked /> : null}
-            {openPersonalProjects ? <Folder openFolder={openFolder} folderName="Personal Projects"/> : null}
+            {openPersonalProjects ? <Folder openFolder={openFolder} folderName={folder}/> : null}
             <Footer>
                 <WindowsButton>
                     <Windows src={WindowsLogo} alt='Initial' />

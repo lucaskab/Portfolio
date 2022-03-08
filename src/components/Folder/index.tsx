@@ -21,13 +21,15 @@ interface FolderProps {
 export function Folder({openFolder, folderName}: FolderProps) {
     const [isFolderMaximized, setIsFolderMaximized] = useState(false);
     const [isPhotoOpened, setIsPhotoOpened] = useState(false);
+    const [photoData, setPhotoData] = useState('');
 
     function maximizeFolder() {
         setIsFolderMaximized(!isFolderMaximized);
     }
 
-    function handleClick(){
+    function handleClick(name: string){
         setIsPhotoOpened(!isPhotoOpened)
+        setPhotoData(name);
     }
 
     return(
@@ -45,14 +47,14 @@ export function Folder({openFolder, folderName}: FolderProps) {
                             <HeaderIcon src={ExitIcon} alt="Exit Icon" onClick={openFolder}/>
                         </ExitContainer>
                     </Header>
-                    <SearchBar />
+                    <SearchBar folderName={folderName}/>
                     <FolderContent>
                         <QuickAccess />
                         <ContentContainer>
                             <ItemsContainer>
-                                <DesktopIcon nameColor="Black" handleClick={handleClick} src={Ecoleta} alt='Ecoleta' name='Ecoleta'/>
-                                <DesktopIcon nameColor="Black" handleClick={handleClick} src={GoBarber} alt='GoBarber' name='GoBarber' />
-                                <DesktopIcon nameColor="Black" handleClick={handleClick} src={Explore} alt='Github Explore' name='Github Explore' />
+                                <DesktopIcon nameColor="Black" handleClick={() => handleClick('Ecoleta')} src={Ecoleta} alt='Ecoleta' name='Ecoleta'/>
+                                <DesktopIcon nameColor="Black" handleClick={() => handleClick('GoBarber')} src={GoBarber} alt='GoBarber' name='GoBarber' />
+                                <DesktopIcon nameColor="Black" handleClick={() => handleClick('Github Explorer')} src={Explore} alt='Github Explore' name='Github Explore' />
                             </ItemsContainer>
                         </ContentContainer>
                     </FolderContent>    
@@ -61,7 +63,7 @@ export function Folder({openFolder, folderName}: FolderProps) {
                     </Footer>
                 </FolderContainer>
             </Container>
-            {isPhotoOpened ? <Photo /> : null}
+            {isPhotoOpened ? <Photo handleClick={handleClick} name={photoData} /> : null}
         </>
     )
 }
