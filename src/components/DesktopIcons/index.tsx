@@ -13,7 +13,7 @@ interface Props {
 export function DesktopIcon({src, alt, name, handleClick, nameColor }: Props) {
    
     return (
-        <Container onDoubleClick={handleClick}>
+        <Container onClick={handleClick}>
             <Icon src={src} alt={alt} />
             <Name nameColor={nameColor}>{name}</Name>
         </Container>

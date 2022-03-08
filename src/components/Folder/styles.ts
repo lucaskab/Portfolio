@@ -99,7 +99,7 @@ export const Footer = styled.footer`
     position: absolute;
     bottom: 0;
     padding: 0 1rem;
-    z-index: 999;
+    z-index: 9;
     background: white;
 `;
 
