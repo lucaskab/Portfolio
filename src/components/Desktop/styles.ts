@@ -4,6 +4,7 @@ export const Container = styled.div`
     width: 100vw;
     height: 100vh;
     display: flex;
+    
 `;
 
 export const IconsContainer = styled.div`
@@ -27,9 +28,10 @@ export const Footer = styled.div`
     bottom: 0;
     height: 6vh;
     width: 100%;
-    background: rgba(0,0,0,0.8);
+    background: rgba(0,0,0,1);
     align-items: center;
     justify-content: space-between;
+    z-index: 1;
 `;
 
 export const WindowsButton = styled.div`
@@ -64,12 +66,20 @@ export const Icon = styled.img`
     margin-right: 0.4rem;
 `;
 
-export const Language = styled.span`
+export const BottomLanguage = styled.span`
     font-size: 0.8rem;
     color: white;
     font-family: 'arial', serif;
     text-align: center;
     margin: 0 0.4rem;
+    cursor: pointer;
+`;
+
+export const BottomLanguageContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 `;
 
 export const TimeAndDate = styled.span`

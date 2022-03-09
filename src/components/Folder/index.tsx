@@ -4,17 +4,14 @@ import MaximizeIcon from '../../assets/square.png';
 import MinimizeIcon from '../../assets/2-squares.png';
 import ExitIcon from '../../assets/close.png';
 import { DesktopIcon } from '../DesktopIcons';
-import Ecoleta from '../../assets/eco.png';
-import GoBarber from '../../assets/gobarber.png';
-import Explore from '../../assets/explore.png';
-import Github from '../../assets/github.png';
 import { SearchBar } from "./components/SearchBar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { QuickAccess } from "./components/QuickAccess";
 import { Photo } from "../Photo";
+import { Projects } from './data';
 
 interface FolderProps {
-    openFolder(): void;
+    openFolder: () => void;
     folderName: string;
 }
 
@@ -22,6 +19,15 @@ export function Folder({openFolder, folderName}: FolderProps) {
     const [isFolderMaximized, setIsFolderMaximized] = useState(false);
     const [isPhotoOpened, setIsPhotoOpened] = useState(false);
     const [photoData, setPhotoData] = useState('');
+    const [project, setProject] = useState('');
+    
+    useEffect(() => {
+        Object.keys(Projects).forEach((key, index) => {
+            if (folderName === Object.keys(Projects)[index]) {
+                setProject(Projects[key]);
+            }
+          });
+    })
 
     function maximizeFolder() {
         setIsFolderMaximized(!isFolderMaximized);
@@ -31,6 +37,8 @@ export function Folder({openFolder, folderName}: FolderProps) {
         setIsPhotoOpened(!isPhotoOpened)
         setPhotoData(name);
     }
+
+
 
     return(
         <>
@@ -51,11 +59,14 @@ export function Folder({openFolder, folderName}: FolderProps) {
                     <FolderContent>
                         <QuickAccess />
                         <ContentContainer>
+                            {project ? 
                             <ItemsContainer>
-                                <DesktopIcon nameColor="Black" handleClick={() => handleClick('Ecoleta')} src={Ecoleta} alt='Ecoleta' name='Ecoleta'/>
-                                <DesktopIcon nameColor="Black" handleClick={() => handleClick('GoBarber')} src={GoBarber} alt='GoBarber' name='GoBarber' />
-                                <DesktopIcon nameColor="Black" handleClick={() => handleClick('Github Explorer')} src={Explore} alt='Github Explore' name='Github Explore' />
-                            </ItemsContainer>
+                                {project.map(item => {
+                                    return (
+                                        <DesktopIcon nameColor="Black" handleClick={() => handleClick(item.title)} src={item.image} alt={item.title} name={item.title} />
+                                    )
+                                })}
+                            </ItemsContainer> : null}
                         </ContentContainer>
                     </FolderContent>    
                     <Footer>

@@ -1,4 +1,4 @@
-import { Container, ImageBackground, WindowsButton, IconsContainer, Footer, Windows, RightContainer, Icon, Language, TimeAndDate } from './styles';
+import { Container, ImageBackground, WindowsButton, IconsContainer, Footer, Windows, RightContainer, Icon, BottomLanguage, TimeAndDate, BottomLanguageContainer } from './styles';
 import WindowsLogo from '../../assets/windowsLogo.png';
 import Wifi from '../../assets/wifi.png';
 import WindowsBackground from '../../assets/WindowsBackground.jpg';
@@ -12,12 +12,16 @@ import FolderIcon from '../../assets/folder.png';
 import { Hacked } from '../Hacked';
 import { Folder } from '../Folder';
 import { useEffect, useState } from 'react';
+import { Language } from '../Language';
+import { useChangeLanguage } from "../../hooks/language";
 
 
 export function Desktop() {
     const [isHacked, setIsHacked] = useState(false);
     const [openPersonalProjects, setOpenPersonalProjects] = useState(false);
+    const [openLanguage, setOpenLanguage] = useState(false);
     const [folder, setFolder] = useState('');
+    const { isEnglish } = useChangeLanguage();
 
     const [time, setTime] = useState('');
     const [date, setDate] = useState('');
@@ -35,16 +39,21 @@ export function Desktop() {
         var hr = date.getHours();
         var m = date.getMinutes();
         var s = date.getSeconds();
+        if(hr < 10) {
+            hr += "0";
+        }
         if(m < 10){
-            m = "0" + m
+            m += "0";
         }
         if(s < 10){
-            s = "0" + s
+            s += "0";
         }
         setTime(hr + ":" + m);
 
+
+        var correctMonth = Number(date.getMonth() + 1);
         var numberDay = date.getDate() < 10 ? '0'+ date.getDate() : date.getDate();
-        var month = date.getMonth() < 10 ? '0'+ date.getMonth() : date.getMonth();
+        var month = correctMonth < 10 ? '0'+ correctMonth : correctMonth ;
         var year = date.getFullYear();
         setDate(numberDay + '/' + month + '/' + year);
     }
@@ -58,9 +67,12 @@ export function Desktop() {
         else if (website === 'Github') window.open('https://www.github.com/lucaskab');
         else window.open('https://drive.google.com/file/d/13z09LML6Wqh3oC-7aUVLBFAuh-f3qBUS/view');
     }
-    function openFolder(name){
+    function openFolder(name: string){
         setOpenPersonalProjects(!openPersonalProjects);
         setFolder(name);
+    }
+    function handleLanguage() {
+        setOpenLanguage(!openLanguage);
     }
 
     return(
@@ -84,11 +96,14 @@ export function Desktop() {
                 </WindowsButton>
                 <RightContainer>
                     <Icon src={Wifi} alt='Internet'/>
-                    <Icon src={WindowsLogo} alt='Internet'/>
-                    <Language>POR <br/> PTB</Language>
+                    <BottomLanguageContainer>
+                        <BottomLanguage onClick={handleLanguage}>{isEnglish ? 'ENG': 'POR'}</BottomLanguage>
+                        <BottomLanguage onClick={handleLanguage}>{isEnglish ? 'EN-US' : 'PT-BR'}</BottomLanguage>
+                    </BottomLanguageContainer>
                     <TimeAndDate>{time}<br/>{date}</TimeAndDate>
                 </RightContainer>
             </Footer>
+            <Language isOpen={openLanguage} handleClick={handleLanguage} />
         </Container>
     )
 }
