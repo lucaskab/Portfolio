@@ -1,6 +1,4 @@
 import { Container, Icon, Name } from './styles';
-import Draggable from 'react-draggable';
-import { useCallback, useEffect } from 'react';
 
 interface Props {
     src: string;
