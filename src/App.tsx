@@ -4,17 +4,16 @@ import { Container } from './styles';
 import { ChangeScreenProvider } from "./hooks/login";
 import { ChangeLanguageProvider } from "./hooks/language";
 
-
 export function App() {
-
+  
   return (
-    <ChangeScreenProvider>
-      <ChangeLanguageProvider>
+    <ChangeLanguageProvider>
+      <ChangeScreenProvider>
         <Container>
           <ProfilePicture />
           <GlobalStyle />
         </Container>
-      </ChangeLanguageProvider>
-    </ChangeScreenProvider>
+      </ChangeScreenProvider>
+    </ChangeLanguageProvider>
   );
 }

@@ -4,6 +4,7 @@ import { Container, HeaderIcon, HeaderTitle, PhotoContainer, PhotoHeader, PhotoH
 import Square from '../../assets/square.png';
 import Close from '../../assets/close.png';
 import { Projects } from './data';
+import { useChangeLanguage } from '../../hooks/language';
 
 interface PhotoProps {
     name: string;
@@ -12,6 +13,8 @@ interface PhotoProps {
 
 
 export function Photo({name, handleClick}: PhotoProps) {
+        const { language } = useChangeLanguage();
+
         const project = Projects.find(item => {
             return item.title === name;
         });
@@ -21,7 +24,7 @@ export function Photo({name, handleClick}: PhotoProps) {
             <PhotoContainer>
                 <PhotoHeader>
                     <PhotoHeaderLeftContainer>
-                        <HeaderTitle>Fotos - {project?.title}</HeaderTitle>
+                        <HeaderTitle>{language === 'en-us' ? 'Picture' : 'Foto'} - {project?.title}</HeaderTitle>
                     </PhotoHeaderLeftContainer>
                     <PhotoHeaderRightContainer>
                         <HeaderIcon src={Square} alt='Maximize'/>
@@ -32,13 +35,13 @@ export function Photo({name, handleClick}: PhotoProps) {
                     <DataContainer>
                         <PhotoOfApp src={project?.image} alt='Go Barber' />
                         <TextContainer>
-                            {project?.description.map(item => {
+                            {project?.description[language].map(item => {
                                 return(<Description>{item}</Description>)
                             })}
                             <Link>Link</Link>
-                            <TextToGithub href={project?.githubLink}>{project?.title} on Github</TextToGithub>
+                            <TextToGithub href={project?.githubLink}>{project?.title} {language === 'en-us' ? 'on' : 'no'} Github</TextToGithub>
                             <BottomContainer>
-                                <BottomTitle>Technologies:</BottomTitle>
+                                <BottomTitle>{language === 'en-us' ? 'Technologies' : 'Tecnologias'}:</BottomTitle>
                                 <IconsContainer>
                                     {project?.tecnologiesIcons.map(item => {
                                         return (
@@ -47,8 +50,8 @@ export function Photo({name, handleClick}: PhotoProps) {
                                 </IconsContainer>
                             </BottomContainer>
                             <BottomContainer>
-                                <BottomTitle>Time period:</BottomTitle>
-                                <DateText>{project?.datePeriod}</DateText>
+                                <BottomTitle>{language === 'en-us' ? 'Time period' : 'Período de tempo'}:</BottomTitle>
+                                <DateText>{project?.datePeriod[language]}</DateText>
                             </BottomContainer>
                         </TextContainer>
                     </DataContainer>    

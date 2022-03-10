@@ -9,6 +9,8 @@ export const Container = styled.div<LoginProps>`
     height: 100vh;
     display: ${({isShowing}) => isShowing ? 'flex' : 'none'};
     position: relative;
+    justify-content: center;
+    align-items: center;
 `;
 
 export const ContainerImage = styled.img`
@@ -30,9 +32,8 @@ export const IntroContainer = styled.div`
     justify-content: center;
     align-items: center;
     position: absolute;
-    left: 38%;
-    top: 20%;
     flex-direction: column;
+    margin-bottom: 10rem;
 `;
 
 export const ProfilePic = styled.img`

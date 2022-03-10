@@ -21,31 +21,32 @@ export function Desktop() {
     const [openPersonalProjects, setOpenPersonalProjects] = useState(false);
     const [openLanguage, setOpenLanguage] = useState(false);
     const [folder, setFolder] = useState('');
-    const { isEnglish } = useChangeLanguage();
+    const { language } = useChangeLanguage();
 
     const [time, setTime] = useState('');
-    const [date, setDate] = useState('');
-    
+    const [dateNow, setDateNow] = useState('');
+
     useEffect(() => {
         getTime();
         const timerId = setInterval(getTime, 1000);
         return function cleanup() {
         clearInterval(timerId);
         };
+        
     }, []);
 
     function getTime() {
         var date= new Date();
-        var hr = date.getHours();
-        var m = date.getMinutes();
-        var s = date.getSeconds();
-        if(hr < 10) {
+        var hr = String(date.getHours());
+        var m = String(date.getMinutes());
+        var s = String(date.getSeconds());
+        if(date.getHours() < 10) {
             hr += "0";
         }
-        if(m < 10){
+        if(date.getMinutes() < 10){
             m += "0";
         }
-        if(s < 10){
+        if(date.getSeconds() < 10){
             s += "0";
         }
         setTime(hr + ":" + m);
@@ -55,12 +56,19 @@ export function Desktop() {
         var numberDay = date.getDate() < 10 ? '0'+ date.getDate() : date.getDate();
         var month = correctMonth < 10 ? '0'+ correctMonth : correctMonth ;
         var year = date.getFullYear();
-        setDate(numberDay + '/' + month + '/' + year);
+        const lang = localStorage.getItem("languagePortfolio");
+
+        if(lang === "en-us") {
+            setDateNow(month + '/' + numberDay + '/' + year);
+        }    
+        else if (lang === "pt-br")  {
+            setDateNow(numberDay + '/' + month + '/' + year);
+        }
     }
 
     function HandleHacked(){
         setIsHacked(true);
-        setTimeout(() => { setIsHacked(false); console.log("Was a joke :)")}, 3000);
+        setTimeout(() => setIsHacked(false), 3000);
     }
     function newTab(website: string) {
         if(website === 'LinkedIn') window.open('https://www.linkedin.com/in/lucas-furini-42b144158/');
@@ -83,9 +91,9 @@ export function Desktop() {
                 <DesktopIcon nameColor="White" handleClick={() => newTab('Github')} src={Github} alt='Github' name='Github' />
                 <DesktopIcon nameColor="White" handleClick={() => newTab('CV')} src={CV} alt='CV' name='CV' />
                 <DesktopIcon nameColor="White" handleClick={HandleHacked} src={Gmail} alt='Gmail' name='Gmail'/>
-                <DesktopIcon nameColor="White" handleClick={HandleHacked} src={CMD} alt='CMD' name="Don't click"/>
-                <DesktopIcon nameColor="White" handleClick={() => openFolder('Personal Projects')} src={FolderIcon} alt='Folder' name="Personal Projects"/>
-                <DesktopIcon nameColor="White" handleClick={() => openFolder('Experiences')} src={FolderIcon} alt='Folder' name="Experiences"/>
+                <DesktopIcon nameColor="White" handleClick={HandleHacked} src={CMD} alt='CMD' name={language === 'en-us' ? "Don't click" : "Não clique"}/>
+                <DesktopIcon nameColor="White" handleClick={() => openFolder('Personal Projects')} src={FolderIcon} alt='Folder' name={language === 'en-us' ? "Personal Projects" : "Projetos Pessoais" }/>
+                <DesktopIcon nameColor="White" handleClick={() => openFolder('Experiences')} src={FolderIcon} alt='Folder' name={language === 'en-us' ? "Experiences" : "Experiências"}/>
             </IconsContainer>
             
             {isHacked ? <Hacked /> : null}
@@ -97,10 +105,10 @@ export function Desktop() {
                 <RightContainer>
                     <Icon src={Wifi} alt='Internet'/>
                     <BottomLanguageContainer>
-                        <BottomLanguage onClick={handleLanguage}>{isEnglish ? 'ENG': 'POR'}</BottomLanguage>
-                        <BottomLanguage onClick={handleLanguage}>{isEnglish ? 'EN-US' : 'PT-BR'}</BottomLanguage>
+                        <BottomLanguage onClick={handleLanguage}>{language === "en-us" ? 'ENG': 'POR'}</BottomLanguage>
+                        <BottomLanguage onClick={handleLanguage}>{language === "en-us" ? 'EN-US' : 'PT-BR'}</BottomLanguage>
                     </BottomLanguageContainer>
-                    <TimeAndDate>{time}<br/>{date}</TimeAndDate>
+                    <TimeAndDate>{time}<br/>{dateNow}</TimeAndDate>
                 </RightContainer>
             </Footer>
             <Language isOpen={openLanguage} handleClick={handleLanguage} />

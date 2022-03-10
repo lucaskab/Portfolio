@@ -5,35 +5,29 @@ interface ChangeLanguageProviderProps {
 }
 
 interface ChangeLanguageContextData {
-    isEnglish: boolean;
-    changeLanguage(): Promise<void>;
+    language: string | null;
+    changeLanguage(language: string): void;
 }
 
 const ChangeLanguageContext = createContext({} as ChangeLanguageContextData);
 
 function ChangeLanguageProvider({ children }: ChangeLanguageProviderProps) {
-    const [isEnglish, setIsEnglish] = useState<boolean>(true);
+    const [language, setLanguage] = useState<string | null>('en-us');
     const changeLanguageStorageKey = 'languagePortfolio';
-
-    function changeLanguage(selectedLanguage){
-        console.log("AAAAAAAAAAAAA");
-      var lang = null;
-      if(selectedLanguage === 'pt-br'){
-        setIsEnglish(false);
-        lang = false;
-      }  
-      else {
-        lang = true;
-        setIsEnglish(true);
-      }
-      
-      
-      localStorage.setItem(changeLanguageStorageKey, JSON.stringify(lang));
+    const firstTime = localStorage.getItem(changeLanguageStorageKey);
+    
+    if(!firstTime) {
+        localStorage.setItem('languagePortfolio', 'en-us');
+    }
+    
+    function changeLanguage(selectedLanguage: string){
+      setLanguage(selectedLanguage);
+      localStorage.setItem(changeLanguageStorageKey, selectedLanguage);
     }
 
-    async function loadLanguageStorageData() {
-        const languageStoraged = await localStorage.getItem(changeLanguageStorageKey);
-        setIsEnglish((JSON.parse(languageStoraged)));
+    function loadLanguageStorageData() {
+        const languageStoraged = localStorage.getItem(changeLanguageStorageKey);
+        setLanguage(languageStoraged);
     }
 
     useLayoutEffect(() => {
@@ -42,7 +36,7 @@ function ChangeLanguageProvider({ children }: ChangeLanguageProviderProps) {
 
     return (
         <ChangeLanguageContext.Provider value={{
-            isEnglish,
+            language,
             changeLanguage,
         }}>
           { children }

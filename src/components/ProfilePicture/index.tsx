@@ -1,8 +1,7 @@
 import { Container, TurnOnButtonDiv, WindowsContainer,WindowsTextContainer, WindowsImage, WindowsText, WindowsDots } from "./styles";
 import {TurnOnButton} from '../TurnOnButton';
 import Windows from '../../assets/windows.png';
-import Typed from 'typed.js';
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { useChangeScreen } from "../../hooks/login";
 import { Login } from "../Login";
 import { Desktop } from "../Desktop";
@@ -10,7 +9,7 @@ import { Desktop } from "../Desktop";
 export function ProfilePicture() {
     const [turnOnButton, setTurnOnButton] = useState(true);
     const { changeScreen, showScreen, showDesktop } = useChangeScreen();
-
+    
     function handleButton() {
         setTurnOnButton(!turnOnButton);
         setTimeout(() => {changeScreen()}, 3000);

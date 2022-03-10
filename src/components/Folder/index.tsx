@@ -9,9 +9,10 @@ import { useEffect, useState } from "react";
 import { QuickAccess } from "./components/QuickAccess";
 import { Photo } from "../Photo";
 import { Projects } from './data';
+import { useChangeLanguage } from '../../hooks/language';
 
 interface FolderProps {
-    openFolder: () => void;
+    openFolder(name: string): void;
     folderName: string;
 }
 
@@ -20,9 +21,10 @@ export function Folder({openFolder, folderName}: FolderProps) {
     const [isPhotoOpened, setIsPhotoOpened] = useState(false);
     const [photoData, setPhotoData] = useState('');
     const [project, setProject] = useState('');
+    const { language } = useChangeLanguage();
     
     useEffect(() => {
-        Object.keys(Projects).forEach((key, index) => {
+        Object.keys(Projects).forEach((key: string, index) => {
             if (folderName === Object.keys(Projects)[index]) {
                 setProject(Projects[key]);
             }
@@ -70,7 +72,7 @@ export function Folder({openFolder, folderName}: FolderProps) {
                         </ContentContainer>
                     </FolderContent>    
                     <Footer>
-                        <ItensQuantity>3 itens</ItensQuantity>
+                        <ItensQuantity>{project.length} {language === 'en-us' ? ' items' : ' itens'}</ItensQuantity>
                     </Footer>
                 </FolderContainer>
             </Container>

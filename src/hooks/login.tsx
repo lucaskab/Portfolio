@@ -22,7 +22,6 @@ function ChangeScreenProvider({ children }: ChangeScreenProviderProps) {
     function changeScreen(){
       const screen = !showScreen;  
       setShowScreen(screen);
-      console.log(screen);
       
       sessionStorage.setItem(changeScreenStorageKey, JSON.stringify(screen));
     }
@@ -34,13 +33,13 @@ function ChangeScreenProvider({ children }: ChangeScreenProviderProps) {
         sessionStorage.setItem(changeDesktopStorageKey, JSON.stringify(desktop));
       }
 
-    async function loadScreenStorageData() {
-        const screenStoraged = await sessionStorage.getItem(changeScreenStorageKey);
+    function loadScreenStorageData() {
+        const screenStoraged = sessionStorage.getItem(changeScreenStorageKey);
         setShowScreen((JSON.parse(screenStoraged)));
     }
 
-    async function loadDesktopStorageData() {
-        const desktopStoraged = await sessionStorage.getItem(changeDesktopStorageKey);
+    function loadDesktopStorageData() {
+        const desktopStoraged = sessionStorage.getItem(changeDesktopStorageKey);
         setShowScreen((JSON.parse(desktopStoraged)));
     }
 

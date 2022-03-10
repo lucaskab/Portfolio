@@ -1,4 +1,5 @@
 import { Container, ArrowsContainer, HeaderIcon, SearchBarContainer, RightChevronIcon, SearchBarText } from "./styles";
+import { useChangeLanguage } from "../../../../hooks/language";
 import ArrowLeft from "../../../../assets/arrow-left.png";
 import ArrowRight from "../../../../assets/arrow-right.png";
 import Folder from "../../../../assets/folder.png";
@@ -10,6 +11,8 @@ interface SearchBarProps {
 }
 
 export function SearchBar({folderName}: SearchBarProps) {
+    const { language } = useChangeLanguage();
+
     return (
         <Container>
             <ArrowsContainer>
@@ -20,9 +23,9 @@ export function SearchBar({folderName}: SearchBarProps) {
             <SearchBarContainer>
                 <HeaderIcon src={Folder} alt="Folder Icon"/>
                 <RightChevronIcon src={RightChevron} alt="Right Icon"/>
-                <SearchBarText> This PC</SearchBarText>
+                <SearchBarText>{language === "en-us" ? 'This PC' : 'Este Computador'}</SearchBarText>
                 <RightChevronIcon src={RightChevron} alt="Right Icon"/>
-                <SearchBarText> Desktop</SearchBarText>
+                <SearchBarText>{language === "en-us" ? 'Desktop' : 'Área de Trabalho'}</SearchBarText>
                 <RightChevronIcon src={RightChevron} alt="Right Icon"/>
                 <SearchBarText>{folderName}</SearchBarText>
             </SearchBarContainer>
