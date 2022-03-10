@@ -18,20 +18,17 @@ export function Login() {
         return function cleanup() {
         clearInterval(timerId);
         };
-    }, []);
+    });
 
     function getTime() {
         var date= new Date();
         var hr = date.getHours();
         var m = date.getMinutes();
-        var s = date.getSeconds();
-        if(m < 10)
-        {
-            m = "0" + m
+        if(hr < 10) {
+            hr += "0";
         }
-        if(s < 10)
-        {
-            s = "0" + s
+        if(m < 10) {
+            m += "0";
         }
         setTime(hr + ":" + m);
 

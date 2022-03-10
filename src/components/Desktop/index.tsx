@@ -39,15 +39,12 @@ export function Desktop() {
         var date= new Date();
         var hr = String(date.getHours());
         var m = String(date.getMinutes());
-        var s = String(date.getSeconds());
+        
         if(date.getHours() < 10) {
             hr += "0";
         }
         if(date.getMinutes() < 10){
             m += "0";
-        }
-        if(date.getSeconds() < 10){
-            s += "0";
         }
         setTime(hr + ":" + m);
 
