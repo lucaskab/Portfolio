@@ -1,16 +1,16 @@
 import { Container, ContainerImage, BlurContainer, IntroContainer, ProfilePic, ProfileText, ProfileButton, DateContainer, TimeText, DayText, WifiPic} from './styles';
-import { useChangeScreen } from "../../hooks/login";
 import img from '../../assets/background.png';
 import ProfilePicture from '../../assets/ProfilePicture.jpg';
 import wifi from '../../assets/wifi.png';
 import { useEffect, useState } from 'react';
 import { useChangeLanguage } from '../../hooks/language';
+import { useNavigate } from 'react-router';
 
 export function Login() {
-    const { showScreen, changeDesktop } = useChangeScreen();
     const { language } = useChangeLanguage();
     const [time, setTime] = useState('');
     const [date, setDate] = useState('');
+    const navigate = useNavigate();
     
     useEffect(() => {
         getTime();
@@ -22,12 +22,13 @@ export function Login() {
 
     function getTime() {
         var date= new Date();
-        var hr = date.getHours();
-        var m = date.getMinutes();
-        if(hr < 10) {
+        var hr = String(date.getHours());
+        var m = String(date.getMinutes());
+
+        if(date.getHours() < 10) {
             hr += "0";
         }
-        if(m < 10) {
+        if(date.getMinutes() < 10) {
             m += "0";
         }
         setTime(hr + ":" + m);
@@ -43,11 +44,11 @@ export function Login() {
     }
 
     function handleDesktop() {
-        changeDesktop();
+        navigate('/Desktop');
     }
     
     return(
-        <Container isShowing={showScreen}>
+        <Container>
             <ContainerImage src={img} alt='Background Image' />
             <BlurContainer />
             <IntroContainer>

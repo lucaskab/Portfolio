@@ -1,19 +1,13 @@
-import { ProfilePicture } from "./components/ProfilePicture";
+import { Navigation } from "./routes/routes";
 import { GlobalStyle } from "./styles/global";
-import { Container } from './styles';
-import { ChangeScreenProvider } from "./hooks/login";
 import { ChangeLanguageProvider } from "./hooks/language";
 
 export function App() {
   
   return (
     <ChangeLanguageProvider>
-      <ChangeScreenProvider>
-        <Container>
-          <ProfilePicture />
+          <Navigation />
           <GlobalStyle />
-        </Container>
-      </ChangeScreenProvider>
     </ChangeLanguageProvider>
   );
 }

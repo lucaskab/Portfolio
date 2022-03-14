@@ -1,13 +1,9 @@
 import styled from 'styled-components';
 
-interface LoginProps {
-    isShowing: boolean;
-}
-
-export const Container = styled.div<LoginProps>`
+export const Container = styled.div`
     width: 100vw;
     height: 100vh;
-    display: ${({isShowing}) => isShowing ? 'flex' : 'none'};
+    display: flex;
     position: relative;
     justify-content: center;
     align-items: center;

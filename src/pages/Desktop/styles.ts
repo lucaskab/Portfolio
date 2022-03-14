@@ -28,10 +28,10 @@ export const Footer = styled.div`
     bottom: 0;
     height: 6vh;
     width: 100%;
-    background: rgba(0,0,0,1);
+    background: #1c2c3c;
     align-items: center;
     justify-content: space-between;
-    z-index: 1;
+    z-index: 2;
 `;
 
 export const WindowsButton = styled.div`

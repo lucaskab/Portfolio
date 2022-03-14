@@ -1,9 +1,5 @@
 import styled from 'styled-components';
 
-interface TurnOnButtonProps {
-    isShowing: boolean;
-}
-
 export const Container = styled.div`
     width: 100vw;
     height: 100vh;
@@ -11,14 +7,6 @@ export const Container = styled.div`
     justify-content: center;
     align-items: center;
     overflow: hidden;
-`;
-
-export const TurnOnButtonDiv = styled.button<TurnOnButtonProps>`
-    display: ${({isShowing}) => isShowing? 'flex' : 'none'};
-    cursor: pointer;
-    border-radius: 50%;
-    width: 10rem;
-    height: 10rem;
 `;
 
 export const WindowsContainer = styled.div`
@@ -90,8 +78,6 @@ export const CmdText = styled.span`
     top: 3.5rem;
     font-family: 'Consolas';
 `;
-
-
 
 export const Cmd = styled.img`
     width: 100%;

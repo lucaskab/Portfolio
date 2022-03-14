@@ -2,18 +2,21 @@ import { Container, ImageBackground, WindowsButton, IconsContainer, Footer, Wind
 import WindowsLogo from '../../assets/windowsLogo.png';
 import Wifi from '../../assets/wifi.png';
 import WindowsBackground from '../../assets/WindowsBackground.jpg';
-import { DesktopIcon } from '../DesktopIcons';
+import { DesktopIcon } from '../../components/DesktopIcons';
 import LinkedIn from '../../assets/linkedin.png';
 import Github from '../../assets/github.png';
 import CV from '../../assets/cv.png';
 import Gmail from '../../assets/gmail.png';
 import CMD from '../../assets/cmd.png';
+import NOTEPAD from '../../assets/notepad.png';
 import FolderIcon from '../../assets/folder.png';
-import { Hacked } from '../Hacked';
-import { Folder } from '../Folder';
+import { Hacked } from '../../components/Hacked';
+import { Folder } from '../../components/Folder';
 import { useEffect, useState } from 'react';
-import { Language } from '../Language';
+import { Language } from '../../components/Language';
 import { useChangeLanguage } from "../../hooks/language";
+import { Notepad } from '../../components/Notepad';
+import { Start } from '../../components/Start';
 
 
 export function Desktop() {
@@ -21,6 +24,8 @@ export function Desktop() {
     const [openPersonalProjects, setOpenPersonalProjects] = useState(false);
     const [openLanguage, setOpenLanguage] = useState(false);
     const [folder, setFolder] = useState('');
+    const [isNotepadOpen, setIsNotepadOpen] = useState(false);
+    const [isStartOpen, setIsStartOpen] = useState(false);
     const { language } = useChangeLanguage();
 
     const [time, setTime] = useState('');
@@ -80,6 +85,14 @@ export function Desktop() {
         setOpenLanguage(!openLanguage);
     }
 
+    function handleOpenNotepad() {
+        setIsNotepadOpen(!isNotepadOpen);
+    }
+
+    function handleOpenStart() {
+        setIsStartOpen(!isStartOpen);
+    }
+
     return(
         <Container>
             <ImageBackground src={WindowsBackground} alt='Windows Wallpaper' />
@@ -92,11 +105,17 @@ export function Desktop() {
                 <DesktopIcon nameColor="White" handleClick={() => openFolder('Personal Projects')} src={FolderIcon} alt='Folder' name={language === 'en-us' ? "Personal Projects" : "Projetos Pessoais" }/>
                 <DesktopIcon nameColor="White" handleClick={() => openFolder('Experiences')} src={FolderIcon} alt='Folder' name={language === 'en-us' ? "Experiences" : "Experiências"}/>
             </IconsContainer>
-            
+
+            <IconsContainer>
+                <DesktopIcon nameColor="White" handleClick={() => handleOpenNotepad()} src={NOTEPAD} alt='Notepad' name={language === 'en-us' ? "About" : "Sobre"}/>
+            </IconsContainer>
+
             {isHacked ? <Hacked /> : null}
             {openPersonalProjects ? <Folder openFolder={openFolder} folderName={folder}/> : null}
+            {isNotepadOpen ? <Notepad handleOpen={handleOpenNotepad}/> : null}
+
             <Footer>
-                <WindowsButton>
+                <WindowsButton onClick={handleOpenStart}>
                     <Windows src={WindowsLogo} alt='Initial' />
                 </WindowsButton>
                 <RightContainer>
@@ -109,6 +128,7 @@ export function Desktop() {
                 </RightContainer>
             </Footer>
             <Language isOpen={openLanguage} handleClick={handleLanguage} />
+            <Start isOpened={isStartOpen} handleOpenStart={handleOpenStart}/>
         </Container>
     )
 }
