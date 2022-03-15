@@ -35,6 +35,7 @@ export const Header = styled.header`
     position: absolute;
     top: 0;
     padding: 0 1rem;
+    border-bottom: 2px solid #f0f0f0;
 `;
 
 export const NameContainer = styled.div`
@@ -65,5 +66,42 @@ export const ExitContainer = styled.div`
     justify-content: space-between;
 `;
 
+export const NotepadTextContainer = styled.div`
+    width: 100%;
+    height: calc(100% - 2rem);
+    margin-top: 2rem;
+    padding: 0 2rem 0 0.5rem;
+    overflow-y: scroll;
+    overflow-x: scroll;
+`;
 
+export const AboutDescription = styled.p`
+    font-size: 1rem;
+    color: black;
+    text-align: justify;
+    margin-bottom: 1rem;
+`;
+
+export const Footer = styled.div`
+    width: 100%;
+    height: 1.8rem;
+    display: flex;
+    justify-content: end;
+    background-color: #f0f0f0;
+    position: relative;
+`;
+
+export const FooterTextContainer = styled.div`
+    padding: 0.5rem;
+    border-left: 1px solid #dbdbdb;
+    padding-right: 2rem;
+    display: flex;
+    align-items: center;
+`;
+
+export const FooterText = styled.span`
+    font-size: 0.8rem;
+    color: black;
+    font-family: 'arial', serif;
+`;
 

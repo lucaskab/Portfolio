@@ -1,17 +1,11 @@
 import styled from 'styled-components';
-import { StartProps } from './index';
+
+interface ContainerProps {
+    isOpened: boolean;
+}
 
 
-export const Container = styled.div`
-    display: flex;
-    width: 100vw;
-    height: 100vh;
-    z-index: 2;
-    position: absolute;
-    z-index: 1;
-`;
-
-export const StartContainer = styled.div<StartProps>`
+export const Container = styled.div<ContainerProps>`
     width: 15rem;
     height:70vh;
     background: #28242c;

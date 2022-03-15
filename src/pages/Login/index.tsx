@@ -22,16 +22,10 @@ export function Login() {
 
     function getTime() {
         var date= new Date();
-        var hr = String(date.getHours());
-        var m = String(date.getMinutes());
+        var hour = String(date.getHours()).padStart(2, '0');
+        var minute = String(date.getMinutes()).padStart(2, '0');
 
-        if(date.getHours() < 10) {
-            hr += "0";
-        }
-        if(date.getMinutes() < 10) {
-            m += "0";
-        }
-        setTime(hr + ":" + m);
+        setTime(hour + ":" + minute);
 
         var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
         var daysPortuguese = ['Domingo', 'Segunda-Feira', 'Terça-Feira', 'Quarta-Feira', 'Quinta-Feira', 'Sexta-Feira', 'Sábado'];

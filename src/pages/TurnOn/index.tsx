@@ -6,7 +6,7 @@ export function TurnOn() {
     const navigate = useNavigate();
     
     function handleButton() {
-        navigate('/Loading');
+        navigate('/Loading', {state: 'start'});
     }
 
     return (

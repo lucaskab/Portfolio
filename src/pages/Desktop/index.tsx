@@ -6,12 +6,13 @@ import { DesktopIcon } from '../../components/DesktopIcons';
 import LinkedIn from '../../assets/linkedin.png';
 import Github from '../../assets/github.png';
 import CV from '../../assets/cv.png';
-import Gmail from '../../assets/gmail.png';
+import GMAIL from '../../assets/gmail.png';
 import CMD from '../../assets/cmd.png';
 import NOTEPAD from '../../assets/notepad.png';
 import FolderIcon from '../../assets/folder.png';
 import { Hacked } from '../../components/Hacked';
 import { Folder } from '../../components/Folder';
+import { Gmail } from '../../components/Gmail';
 import { useEffect, useState } from 'react';
 import { Language } from '../../components/Language';
 import { useChangeLanguage } from "../../hooks/language";
@@ -26,6 +27,7 @@ export function Desktop() {
     const [folder, setFolder] = useState('');
     const [isNotepadOpen, setIsNotepadOpen] = useState(false);
     const [isStartOpen, setIsStartOpen] = useState(false);
+    const [isGmailOpen, setIsGmailOpen] = useState(false);
     const { language } = useChangeLanguage();
 
     const [time, setTime] = useState('');
@@ -42,22 +44,16 @@ export function Desktop() {
 
     function getTime() {
         var date= new Date();
-        var hr = String(date.getHours());
-        var m = String(date.getMinutes());
-        
-        if(date.getHours() < 10) {
-            hr += "0";
-        }
-        if(date.getMinutes() < 10){
-            m += "0";
-        }
-        setTime(hr + ":" + m);
+        var hour = String(date.getHours()).padStart(2, '0');
+        var minute = String(date.getMinutes()).padStart(2, '0');
 
+        setTime(hour + ":" + minute);
 
         var correctMonth = Number(date.getMonth() + 1);
-        var numberDay = date.getDate() < 10 ? '0'+ date.getDate() : date.getDate();
-        var month = correctMonth < 10 ? '0'+ correctMonth : correctMonth ;
+        var numberDay = String(date.getDate()).padStart(2, '0');
+        var month = String(correctMonth).padStart(2, '0') ;
         var year = date.getFullYear();
+
         const lang = localStorage.getItem("languagePortfolio");
 
         if(lang === "en-us") {
@@ -93,6 +89,10 @@ export function Desktop() {
         setIsStartOpen(!isStartOpen);
     }
 
+    function handleGmail(){
+        setIsGmailOpen(!isGmailOpen);
+    }
+
     return(
         <Container>
             <ImageBackground src={WindowsBackground} alt='Windows Wallpaper' />
@@ -100,7 +100,7 @@ export function Desktop() {
                 <DesktopIcon nameColor="White" handleClick={() => newTab('LinkedIn')} src={LinkedIn} alt='LinkedIn' name='LinkedIn'/>
                 <DesktopIcon nameColor="White" handleClick={() => newTab('Github')} src={Github} alt='Github' name='Github' />
                 <DesktopIcon nameColor="White" handleClick={() => newTab('CV')} src={CV} alt='CV' name='CV' />
-                <DesktopIcon nameColor="White" handleClick={HandleHacked} src={Gmail} alt='Gmail' name='Gmail'/>
+                <DesktopIcon nameColor="White" handleClick={handleGmail} src={GMAIL} alt='Gmail' name='Gmail'/>
                 <DesktopIcon nameColor="White" handleClick={HandleHacked} src={CMD} alt='CMD' name={language === 'en-us' ? "Don't click" : "Não clique"}/>
                 <DesktopIcon nameColor="White" handleClick={() => openFolder('Personal Projects')} src={FolderIcon} alt='Folder' name={language === 'en-us' ? "Personal Projects" : "Projetos Pessoais" }/>
                 <DesktopIcon nameColor="White" handleClick={() => openFolder('Experiences')} src={FolderIcon} alt='Folder' name={language === 'en-us' ? "Experiences" : "Experiências"}/>
@@ -113,6 +113,7 @@ export function Desktop() {
             {isHacked ? <Hacked /> : null}
             {openPersonalProjects ? <Folder openFolder={openFolder} folderName={folder}/> : null}
             {isNotepadOpen ? <Notepad handleOpen={handleOpenNotepad}/> : null}
+            {isGmailOpen ? <Gmail /> : null}
 
             <Footer>
                 <WindowsButton onClick={handleOpenStart}>
@@ -128,7 +129,12 @@ export function Desktop() {
                 </RightContainer>
             </Footer>
             <Language isOpen={openLanguage} handleClick={handleLanguage} />
-            <Start isOpened={isStartOpen} handleOpenStart={handleOpenStart}/>
+            <Start 
+                isOpened={isStartOpen} 
+                handleOpenStart={handleOpenStart}
+                handleOpenAbout={handleOpenNotepad}
+                handleOpenExperiences={openFolder}
+            />
         </Container>
     )
 }
