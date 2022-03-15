@@ -75,6 +75,7 @@ export function Desktop() {
     }
     function openFolder(name: string){
         setOpenPersonalProjects(!openPersonalProjects);
+        console.log(name);
         setFolder(name);
     }
     function handleLanguage() {
@@ -90,7 +91,7 @@ export function Desktop() {
     }
 
     function handleGmail(){
-        setIsGmailOpen(!isGmailOpen);
+        setIsGmailOpen(isGmailOpen => !isGmailOpen);
     }
 
     return(
@@ -102,8 +103,8 @@ export function Desktop() {
                 <DesktopIcon nameColor="White" handleClick={() => newTab('CV')} src={CV} alt='CV' name='CV' />
                 <DesktopIcon nameColor="White" handleClick={handleGmail} src={GMAIL} alt='Gmail' name='Gmail'/>
                 <DesktopIcon nameColor="White" handleClick={HandleHacked} src={CMD} alt='CMD' name={language === 'en-us' ? "Don't click" : "Não clique"}/>
-                <DesktopIcon nameColor="White" handleClick={() => openFolder('Personal Projects')} src={FolderIcon} alt='Folder' name={language === 'en-us' ? "Personal Projects" : "Projetos Pessoais" }/>
-                <DesktopIcon nameColor="White" handleClick={() => openFolder('Experiences')} src={FolderIcon} alt='Folder' name={language === 'en-us' ? "Experiences" : "Experiências"}/>
+                <DesktopIcon nameColor="White" handleClick={() => openFolder(language === 'en-us' ? 'Personal Projects' : 'Projetos Pessoais')} src={FolderIcon} alt='Folder' name={language === 'en-us' ? "Personal Projects" : "Projetos Pessoais" }/>
+                <DesktopIcon nameColor="White" handleClick={() => openFolder(language === 'en-us' ? 'Experiences' : 'Experiências')} src={FolderIcon} alt='Folder' name={language === 'en-us' ? "Experiences" : "Experiências"}/>
             </IconsContainer>
 
             <IconsContainer>
@@ -113,7 +114,7 @@ export function Desktop() {
             {isHacked ? <Hacked /> : null}
             {openPersonalProjects ? <Folder openFolder={openFolder} folderName={folder}/> : null}
             {isNotepadOpen ? <Notepad handleOpen={handleOpenNotepad}/> : null}
-            {isGmailOpen ? <Gmail /> : null}
+            {isGmailOpen ? <Gmail handleOpenGmail={handleGmail}/> : null}
 
             <Footer>
                 <WindowsButton onClick={handleOpenStart}>

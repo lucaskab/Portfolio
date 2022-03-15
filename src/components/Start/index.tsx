@@ -34,20 +34,20 @@ export function Start({isOpened, handleOpenStart, handleOpenAbout, handleOpenExp
     return(
         <Container isOpened={isOpened}>
                 <ItemContainer>
-                    <Icon src={Menu} alt='Teste' />
+                    <Icon src={Menu} alt='Start' />
                     <ItemText>{language === 'en-us' ? 'Start' : 'Iniciar'}</ItemText>
                 </ItemContainer>
                 <BottomContainer>
                     <ItemContainer>
-                        <Icon src={ProfilePic} alt='Teste' />
+                        <Icon src={ProfilePic} alt='Profile picture' />
                         <ItemText>Lucas Furini</ItemText>
                     </ItemContainer>
                     <ItemContainer onClick={() => handleOpenWindowAndCloseStart('About')}>
-                        <Icon src={NOTEPAD} alt='Teste' />
+                        <Icon src={NOTEPAD} alt='Notepad' />
                         <ItemText>{language === 'en-us' ? 'About' : 'Sobre'}</ItemText>
                     </ItemContainer>
                     <ItemContainer onClick={() => handleOpenWindowAndCloseStart('Experiences')}>
-                        <Icon src={Folder} alt='Teste' />
+                        <Icon src={Folder} alt='Folder' />
                         <ItemText>{language === 'en-us' ? 'Experiences' : 'Experiências'}</ItemText>
                     </ItemContainer>
                     <ItemContainer onClick={handleShutDown}>

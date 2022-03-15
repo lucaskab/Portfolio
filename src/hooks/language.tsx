@@ -5,14 +5,14 @@ interface ChangeLanguageProviderProps {
 }
 
 interface ChangeLanguageContextData {
-    language: string | null;
+    language: string;
     changeLanguage(language: string): void;
 }
 
 const ChangeLanguageContext = createContext({} as ChangeLanguageContextData);
 
 function ChangeLanguageProvider({ children }: ChangeLanguageProviderProps) {
-    const [language, setLanguage] = useState<string | null>('en-us');
+    const [language, setLanguage] = useState<string>('en-us');
     const changeLanguageStorageKey = 'languagePortfolio';
     const firstTime = localStorage.getItem(changeLanguageStorageKey);
     
