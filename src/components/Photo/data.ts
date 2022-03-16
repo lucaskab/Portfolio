@@ -4,6 +4,11 @@ import ReactJS from '../../assets/reactjs.png';
 import ReactNative from '../../assets/reactnative.png';
 import TypeScript from '../../assets/typescript.png';
 import GoBarber from '../../assets/GoBarberPC.png';
+import Enext from '../../assets/enext.jpg';
+import Gaules from '../../assets/gaules.png';
+import Ecoleta from '../../assets/ecoletaBackground.png';
+import GithubExplorer from '../../assets/github_explorer.png';
+import Pecege from '../../assets/pecegeBackground.png';
 
 interface EnumServiceItem {
     title: string; 
@@ -41,7 +46,7 @@ export const Projects = [
     },
     {
         title: 'Ecoleta',
-        image: GoBarber,
+        image: Ecoleta,
         description: {
             "en-us": [
                 'Application for ecological purposes, serving as a connection between companies that collect garbage and people who need to dispose of it, for example lamps, electronic devices, batteries, organics, etc.',
@@ -63,7 +68,7 @@ export const Projects = [
     },
     {
         title: 'Github Explorer',
-        image: GoBarber,
+        image: GithubExplorer,
         description: {
             "en-us": [
                 'Application developed in ReactJS with the objective of using an external API (GitHub), with CRUD actions on GitHub repositories and showing some information about these repositories.'
@@ -77,6 +82,64 @@ export const Projects = [
         datePeriod: {
             "en-us": 'Jun 2019',
             "pt-br": 'Jun 2019'
+        },
+    },
+    // Experiences
+    {
+        title: 'Enext',
+        image: Enext,
+        description: {
+            "en-us": [
+                'Development of Landing Pages, new features, QA adjusts, deploy projects on platform, supporting the onboarding of new team members and coaching them to get up to speed, development of AB tests on Google Optimize, creating tags on Google Analytics'
+            ],
+            "pt-br": [
+                'Desenvolvimento de Landing Pages, novas features, ajustes de QA, deploy de projetos na plataforma VTEX, suporte no onboarding de novos membros do time e ensinando-os para entrarem no ritmo da empresa, desenvolvimento de testes AB no Google Optmize, criação de tags no Google Analytics.'
+            ]
+        },
+        githubLink: '',
+        tecnologiesIcons: [ReactJS],
+        datePeriod: {
+            "en-us": 'Aug 2020 - Feb 2021',
+            "pt-br": 'Ago 2020 - Fev 2021'
+        },
+    },
+    {
+        title: 'Gaules - Tribo',
+        image: Gaules,
+        description: {
+            "en-us": [
+                'Mobile application developed with React Native, NodeJS, MongoDB, Twitch API and StreamElements API',
+                'Tribo is na application for the biggest Brazilian streamer “Gaules”, in order to show which “Tribo” streamers are live, their stores on StreamElements, information about Counter-Strike tournaments, brazilian teams and NBA matches.'
+            ],
+            "pt-br": [
+                'Aplicação mobile desenvolvida com React Native, NodeJS, MongoDB, Twitch API e StreamElements API.',
+                'Tribo é uma aplicação para a comunidade do maior streamer brasileiro “Gaules”, com o intuito de mostrar quais streamers da “Tribo” estão em live, suas respectivas lojas no StreamElements, informações sobre torneios de Counter-Strike, e transmissões da NBA.'
+            ]
+        },
+        githubLink: '',
+        tecnologiesIcons: [ReactNative, NodeJS],
+        datePeriod: {
+            "en-us": 'July 2021 - Oct 2021',
+            "pt-br": 'Jul 2021 - Out 2021'
+        },
+    },
+
+    {
+        title: 'Pecege',
+        image: Pecege,
+        description: {
+            "en-us": [
+                'React Native developer with focus on application called Move by Pecege',
+            ],
+            "pt-br": [
+                'Desenvolvedor React Native, com foco na aplicação Move by Pecege',
+            ]
+        },
+        githubLink: '',
+        tecnologiesIcons: [ReactNative],
+        datePeriod: {
+            "en-us": 'Mar 2022 - Present',
+            "pt-br": 'Mar 2022 - Presente'
         },
     },
 ]

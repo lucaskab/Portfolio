@@ -24,8 +24,16 @@ export function Folder({openFolder, folderName}: FolderProps) {
     const { language } = useChangeLanguage();
     
     useEffect(() => {
+        var folderNameTranslate = '';
+        if(language === 'pt-br' && folderName.includes('Experi')){
+            folderNameTranslate = 'Experiences';
+        } else if (language === 'pt-br' && folderName.includes('Pessoais')){
+            folderNameTranslate = 'Personal Projects';
+        } else {
+            folderNameTranslate = folderName;
+        }
         Object.keys(Projects).forEach((key: string, index) => {
-            if (folderName === Object.keys(Projects)[index]) {
+            if (folderNameTranslate === Object.keys(Projects)[index]) {
                 setProject(Projects[key]);
             }
           });

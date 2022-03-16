@@ -13,6 +13,7 @@ export const Container = styled.div`
 export const PhotoContainer = styled.div`
     width: 70vw;
     height: 85vh;
+    min-height: 85vh;
     background: white;
     z-index: 11;
     position: relative;
@@ -55,6 +56,7 @@ export const HeaderIcon = styled.img`
     width: 1rem;
     height: 1rem;
     margin-right: 0.8rem;
+    cursor: pointer;
 `;
 
 export const ProjectTitle = styled.h1`
@@ -73,6 +75,7 @@ export const DataContainer = styled.div`
 export const PhotoOfApp = styled.img`
     width: 25rem;
     height: 17rem;
+    margin-top: 3rem;
 `;
 
 export const TextContainer = styled.div`

@@ -33,7 +33,7 @@ export const Projects = {
             image: Pecege,
         },
         {
-            title: 'Tribo',
+            title: 'Gaules - Tribo',
             image: Tribo,
         },
         {

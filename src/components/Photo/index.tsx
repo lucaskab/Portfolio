@@ -38,8 +38,12 @@ export function Photo({name, handleClick}: PhotoProps) {
                             {project?.description[language].map(item => {
                                 return(<Description>{item}</Description>)
                             })}
-                            <Link>Link</Link>
-                            <TextToGithub href={project?.githubLink}>{project?.title} {language === 'en-us' ? 'on' : 'no'} Github</TextToGithub>
+                            {project?.githubLink ?
+                                <> 
+                                    <Link>Link</Link>
+                                    <TextToGithub href={project?.githubLink}>{project?.title} {language === 'en-us' ? 'on' : 'no'} Github</TextToGithub>
+                                </>
+                            : null}
                             <BottomContainer>
                                 <BottomTitle>{language === 'en-us' ? 'Technologies' : 'Tecnologias'}:</BottomTitle>
                                 <IconsContainer>
