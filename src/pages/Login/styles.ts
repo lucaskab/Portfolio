@@ -70,6 +70,9 @@ export const TimeText = styled.span`
     color: white;
     margin-top: 2rem;
     font-family: 'arial', serif;
+    @media (max-width: 720px) {
+        font-size: 5rem;
+    }
 `;
 
 export const DayText = styled.span`
@@ -77,6 +80,9 @@ export const DayText = styled.span`
     color: white;
     font-weight: bold;
     font-family: 'arial', serif;
+    @media (max-width: 720px) {
+        font-size: 2rem;
+    }
 `;
 
 export const WifiPic = styled.img`
