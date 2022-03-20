@@ -7,17 +7,21 @@ interface ContainerProps {
 
 export const Container = styled.div<ContainerProps>`
     width: 15rem;
-    height:70vh;
+    height: 70vh;
     background: #28242c;
     position: absolute;
-    bottom: ${({isOpened}) => isOpened ? '6vh' : '-64vh'};
+    bottom: ${({isOpened}) => isOpened ? '3rem' : '-70vh'};
     left: 0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     z-index: 1;
 
-    transition: bottom 0.15s ease-in;
+    transition: bottom 0.25s ease-in;
+
+    @media(max-width: 767px) {
+          height: 50vh;
+    }
 `;
 
 export const BottomContainer = styled.div``;

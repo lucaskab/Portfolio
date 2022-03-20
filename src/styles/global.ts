@@ -24,6 +24,7 @@ export const GlobalStyle = createGlobalStyle`
         @media (max-width: 720px) {
             font-size: 87.5%;
         }
+        position:relative;
         overflow-y: hidden;
         caret-color: transparent;
     }
@@ -31,7 +32,8 @@ export const GlobalStyle = createGlobalStyle`
     body {
         background: var(--background);
         -webkit-font-smoothing: antialiased;
-        
+        position:relative;
+        overflow-y: hidden;
     }
 
     body, input, textarea, button {

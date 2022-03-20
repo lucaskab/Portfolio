@@ -22,8 +22,8 @@ export const Container = styled.div`
 `;
 
 export const Icon = styled.img`
-    width: 3rem;
-    height: 3rem;
+    width: 48%;
+    height: 70%;
 `;
 
 export const Name = styled.span<NameProps>`

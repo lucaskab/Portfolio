@@ -8,7 +8,7 @@ export const Container = styled.div<LanguageProps>`
     width: 18rem;
     height: 7rem;
     position: absolute;
-    bottom: ${({isOpen}) => isOpen ? '3rem' : '-10rem'};
+    bottom: ${({isOpen}) => isOpen ? '3rem' : '-3rem'};
     right: 0rem;
     transition: bottom 0.5s ease-in;
     z-index: 0;

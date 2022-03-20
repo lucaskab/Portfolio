@@ -19,6 +19,11 @@ export const GmailContent = styled.div`
     background: white;
     border-radius: 0.7rem 0.7rem 0 0;
     position: relative;
+
+    @media(max-width: 767px) {
+        height: 50%;
+        width: 80%;  
+    }
 `;
 
 export const Header = styled.header`
@@ -111,7 +116,10 @@ export const SendButton = styled.input`
 
     :active {
         opacity: 0.7;
-        
+    }
+
+    @media(max-width: 767px) {
+        margin-top: 2rem;  
     }
 `;
 

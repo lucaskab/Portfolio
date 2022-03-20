@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     position: absolute;
     z-index: 10;
     display: flex;
@@ -18,6 +18,11 @@ export const PhotoContainer = styled.div`
     z-index: 11;
     position: relative;
     border: 1px solid black;
+
+    @media(max-width: 767px) {
+        width: 80vw;
+        overflow-y: scroll;
+    }
 `;
 
 export const PhotoHeader = styled.div`
@@ -70,18 +75,33 @@ export const DataContainer = styled.div`
     width: 100%;
     display: flex;
     padding: 1rem 2rem;
+    @media(max-width: 767px) {
+        flex-direction: column;
+    }
 `;
 
 export const PhotoOfApp = styled.img`
     width: 25rem;
     height: 17rem;
     margin-top: 3rem;
+    padding: 1rem;
+
+    @media(max-width: 767px) {
+        width: 20rem;
+        height: 14rem;
+        margin-top: 1rem;
+    }
 `;
 
 export const TextContainer = styled.div`
     display: flex;
     flex-direction: column;
     padding: 2rem;
+
+    @media(max-width: 767px) {
+        padding: 1rem 0.6rem;
+        text-align: justify;
+    }
 `;
 
 export const Description = styled.span`
@@ -108,6 +128,11 @@ export const BottomContainer = styled.div`
     width: 100%;
     align-items: center;
     margin-top: 3rem;
+
+    @media(max-width: 767px) {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 `;
 
 export const BottomTitle = styled.h1`
@@ -118,6 +143,9 @@ export const BottomTitle = styled.h1`
 
 export const IconsContainer = styled.div`
     display: flex;
+    @media(max-width: 767px) {
+        margin-top: 1rem;  
+    }
 `;
 
 export const Icon = styled.img`
@@ -131,6 +159,11 @@ export const DateText = styled.span`
     font-size: 1rem;
     font-weight: bold;
     margin-left: 0.5rem;
+
+    @media(max-width: 767px) {
+        margin-top: 0.5rem;
+        margin-left: 0;  
+    }
 `;
 
 

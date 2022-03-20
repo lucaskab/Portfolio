@@ -19,6 +19,11 @@ export const Item = styled.div`
     :hover {
         background: #E3E5FB;
     }
+
+    @media(max-width: 767px) {
+        padding: 0.3rem 0 0.3rem 1rem;  
+        margin-right: 1rem;          
+    }
 `;
 
 export const Icon = styled.img`

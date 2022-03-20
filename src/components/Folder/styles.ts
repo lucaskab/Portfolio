@@ -79,12 +79,19 @@ export const ContentContainer = styled.div`
     margin-top: 0.1rem;
     margin-bottom: 0.1rem;
     padding: 2rem;
+
 `;
 
 export const ItemsContainer = styled.div`
     display: flex;
     flex-direction: row;
     width: 100%;
+
+    @media(max-width: 767px) {
+        
+        display: grid;
+        grid-template-columns: 7rem 7rem;              /* Limit height to whatever you need */
+    }
 `;
 
 export const Footer = styled.footer`

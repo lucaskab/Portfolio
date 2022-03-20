@@ -1,6 +1,6 @@
-import { Container, TurnOnButtonDiv,  } from "./styles";
-import {TurnOnButton} from '../../components/TurnOnButton';
+import { Container, TurnOnButtonDiv, TurnOnImage  } from "./styles";
 import { useNavigate } from "react-router";
+import TurnOnButton from '../../assets/power-off.png';
 
 export function TurnOn() {
     const navigate = useNavigate();
@@ -12,7 +12,7 @@ export function TurnOn() {
     return (
             <Container>
                 <TurnOnButtonDiv  onClick={handleButton}>
-                    <TurnOnButton />  
+                    <TurnOnImage src={TurnOnButton} alt="Turn on Button" />  
                 </TurnOnButtonDiv> 
             </Container>
     )

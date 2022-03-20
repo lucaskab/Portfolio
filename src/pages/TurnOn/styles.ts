@@ -12,7 +12,14 @@ export const Container = styled.div`
 export const TurnOnButtonDiv = styled.button`
     display: flex;
     cursor: pointer;
-    border-radius: 50%;
+    border-radius: 60%;
+    width: 10rem;
+    height: 10rem;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const TurnOnImage = styled.img`
     width: 10rem;
     height: 10rem;
 `;

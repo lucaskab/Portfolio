@@ -4,12 +4,9 @@ export const Container = styled.div`
     width: 100vw;
     height: 100vh;
     display: flex;
-    
 `;
 
 export const IconsContainer = styled.div`
-    width: auto;
-    height: auto;
     display: flex;
     flex-direction: column;
     margin-left: 1rem;
@@ -26,7 +23,7 @@ export const Footer = styled.div`
     display: flex;
     position: absolute;
     bottom: 0;
-    height: 6vh;
+    height: 3rem;
     width: 100%;
     background: #1c2c3c;
     align-items: center;
@@ -36,7 +33,7 @@ export const Footer = styled.div`
 
 export const WindowsButton = styled.div`
     width: 3rem;
-    height: 6vh;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
