@@ -71,11 +71,10 @@ export function Desktop() {
     function newTab(website: string) {
         if(website === 'LinkedIn') window.open('https://www.linkedin.com/in/lucas-furini-42b144158/');
         else if (website === 'Github') window.open('https://www.github.com/lucaskab');
-        else window.open('https://drive.google.com/file/d/13z09LML6Wqh3oC-7aUVLBFAuh-f3qBUS/view');
+        else window.open('https://drive.google.com/file/d/1-A_xwtURdyUYKI3RGo7uur0KqrO0gis5/view');
     }
     function openFolder(name: string){
         setOpenPersonalProjects(!openPersonalProjects);
-        console.log(name);
         setFolder(name);
     }
     function handleLanguage() {
